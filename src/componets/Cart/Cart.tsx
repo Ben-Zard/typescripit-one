@@ -1,9 +1,10 @@
 import Modal from '../UI/Modal'
 
-type Props = {
+interface Props {
+    hidehandleCart: ()=> void;
 }
 
-const Cart = () => {
+const Cart = ({hidehandleCart}:Props) => {
     const cartItems = (
     <ul className = 'cart'>
         {[{id: "1",name: "name", amount: 2, price: 10.99}].map((item)=>(
@@ -20,8 +21,8 @@ const Cart = () => {
             <span>5 </span>
             </div>
         <div className = "actions">
-            <button className = 'buttonalt'>Close</button> 
-            <button className = 'button'> Order</button> 
+            <button className = 'buttonalt' onClick = {hidehandleCart}>Close</button> 
+            <button className = 'button'onClick = {hidehandleCart}> Order</button> 
         </div>
     </Modal>
 </>
