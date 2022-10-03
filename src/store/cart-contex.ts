@@ -1,13 +1,27 @@
 
 import React, { createContext } from 'react';
 
-const CartContext = {
-    items:[],
-    totalAmount: 0,
-    addItems:( type: any, item: any) => {},
-    removeItems: (type: any, id: any) => {}
-    }
-export type CartState = typeof CartContext;
-const CartCtx = createContext<typeof CartContext>(CartContext);
+type ContextState = {
+    items: {amount?:any,
+    description?:any,
+    price?:any,
+    id?:any,
+    name?:any,
+}[],
+    totalAmount: number,
+    addItem?:( ) => any,
+    removeItem?: (id:any) => any 
+}
 
+ const Context:ContextState = {
+    items: [],
+    totalAmount: 5,
+    addItem:() => Context.items,
+    removeItem: (id: any) => id,
+    }
+
+ export type CartState = ContextState;
+// const CartCtx = createContext<ContextState>(CartContext);
+const CartCtx = createContext<ContextState>(Context)
 export default CartCtx;
+// export default CartCtx;

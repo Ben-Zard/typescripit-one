@@ -7,14 +7,9 @@ type Props = {
 
 type ACTIONTYPE = { type: "ADD"; item: any } | { type: "DEC"; id: any };
 
-interface defaultCartState {
-  items: any;
-  totalAmount: any,
-};
-
-const defaultCartState={ 
-    items: [],
-    totalAmount: 0
+const defaultCartState:CartState = {
+    items: [] = [],
+    totalAmount: 5,
 }
 const cartReducer = (state: typeof defaultCartState, action: ACTIONTYPE) => {
   if (action.type === "ADD") {

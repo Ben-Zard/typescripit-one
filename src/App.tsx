@@ -4,6 +4,7 @@ import "./styles/main.scss";
 import Cart from "./componets/Cart/Cart";
 import { ChangeEvent, useState } from "react";
 import CartProvider from "./store/CartProvider";
+import React from "react";
 
 
 function App() {

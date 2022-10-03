@@ -1,20 +1,18 @@
 import React,{useContext} from 'react'
 import CartCtx from "../../store/cart-contex"
 interface Props {
-  showhandleCart:(()=> void)
+  showhandleCart:(()=> any)
 };
 const HeaderCart = ({showhandleCart}:Props) => {
   const cartctx = useContext(CartCtx)
 
-  const numberCartItems = cartctx!.items.reduce((curnum: any, item: any)=>{
-    return curnum + item.amount;
+  const numberCartItems = cartctx.items.reduce((curnum: any, item: any)=>{
+    return curnum + item.totalamount;
   }, 0);
 
   return (
     <>
-    <button className="button" onClick ={showhandleCart}
->
-{/* <input onChange ={(e) =>handletodo(e.target.value)}/> */}
+    <button className="button" onClick ={showhandleCart}>
     <span className="icon">I</span>
     <span>Your Cart</span>
     <span className="badge">{numberCartItems}</span>

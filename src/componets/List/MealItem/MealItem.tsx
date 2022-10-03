@@ -13,9 +13,8 @@ const MealItem = ({name,description,price,id}: IMealList) => {
 const cartCTX =useContext(CartContext)
 
 const addItemToCart = (amount:number) => {
-  // cartCTX!.addItems(amount,"add")
+  //  cartCTX!.addItem()
 }
-
 
   return (
     <li className="meal">
