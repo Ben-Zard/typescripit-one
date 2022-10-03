@@ -3,6 +3,9 @@ import Header from "./componets/Layout/Header";
 import "./styles/main.scss";
 import Cart from "./componets/Cart/Cart";
 import { ChangeEvent, useState } from "react";
+import CartProvider from "./store/CartProvider";
+
+
 function App() {
   const [showCart, setshowCart] = useState<boolean>(false);
   // const [todo,setTodo] = useState<string>('');
@@ -21,13 +24,13 @@ function App() {
   // };
   
   return (
-    <>
+    <CartProvider>
     {showCart && <Cart hidehandleCart = {hidehandleCart} />}
       <Header showhandleCart = {showhandleCart}/>
       <main>
         <List />
       </main>
-    </>
+    </CartProvider>
   );
 }
 

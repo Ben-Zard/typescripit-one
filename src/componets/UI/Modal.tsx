@@ -3,15 +3,14 @@ import ReactDOM from "react-dom";
 
 interface Modal {
     children: JSX.Element|JSX.Element[];
-//   Backdrop:React.ElementType;
-//   ModalOverlay: React.ElementType;
-    // protalElement: HTMLElement;
 };
 interface ModalOverlay {
     children: JSX.Element|JSX.Element[],
   };
+interface Props {
+}
 
-const Backdrop = () => {
+const Backdrop = ({}:Props) => {
    return (
    <div className="backdrop"></div>
    )

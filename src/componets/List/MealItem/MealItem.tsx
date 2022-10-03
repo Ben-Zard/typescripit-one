@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useContext} from "react";
 import {IMealList} from "../../interface"
 import MealItemForm from "./MealItemForm";
+import CartContext from "../../../store/cart-contex";
 // interface mealsList {
 //     name:string,
 //     description:string,
 //     price:number,
 // }
 
+
 const MealItem = ({name,description,price,id}: IMealList) => {
+const cartCTX =useContext(CartContext)
+
+const addItemToCart = (amount:number) => {
+  // cartCTX!.addItems(amount,"add")
+}
+
+
   return (
     <li className="meal">
       <div>
@@ -16,7 +25,7 @@ const MealItem = ({name,description,price,id}: IMealList) => {
     <div className="price">{`$${price.toFixed(2)}`}</div> 
       </div>
       <div>
-      <MealItemForm id = {id}/>
+      <MealItemForm id = {id} addItemToCart={addItemToCart}/>
       </div>
     </li>
   );

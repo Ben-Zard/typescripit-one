@@ -1,18 +1,19 @@
 import React from 'react'
 
 type Props = {
+  ref: any,
     input:any,
-    id: string,
+    id:any,
     label:string
 }
 
-const Input = ({input,label,id}: Props) => {
+const Input = React.forwardRef(({input,label,ref}: Props) => {
   return (
     <div className = 'input'>
         <label htmlFor={input.id}>{label}</label>
-        <input id = {input.id} {...input}/>
+        <input ref= {ref} id = {input.id} {...input} />
     </div>
   )
-}
+});
 
 export default Input
