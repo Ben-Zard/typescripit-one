@@ -5,3 +5,8 @@ export interface IMealList{
     description: string;
     price: number;
  }
+
+ export type Cart = {
+    item: IMealList [];
+    total: number;
+ }

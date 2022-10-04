@@ -1,27 +1,45 @@
 
 import React, { createContext } from 'react';
-
-type ContextState = {
-    items: {amount?:any,
-    description?:any,
-    price?:any,
-    id?:any,
-    name?:any,
-}[],
-    totalAmount: number,
-    addItem?:( ) => any,
-    removeItem?: (id:any) => any 
-}
-
- const Context:ContextState = {
-    items: [],
-    totalAmount: 5,
-    addItem:() => Context.items,
-    removeItem: (id: any) => id,
+import {IMealList} from '../componets/interface'
+import {Cart} from '../componets/interface'
+    const initialCart: Cart = {
+    item:[{ id: '', name: '',description: '',price: 0}],
+    total: 0
     }
 
- export type CartState = ContextState;
-// const CartCtx = createContext<ContextState>(CartContext);
-const CartCtx = createContext<ContextState>(Context)
-export default CartCtx;
-// export default CartCtx;
+type Dispatch = (action: Actions) => void
+
+ export const CountStateContext = createContext<{state: Cart[]; dispatch: Dispatch} | undefined>(undefined)
+
+
+
+type Actions = { type: "ADD"; item: any } | { type: "DEC"; id: any };
+function countReducer(state : Cart[], action:Actions) {
+    switch (action.type) {
+      case 'ADD': {
+        return {state}
+      }
+      case 'DEC': {
+        return {state}
+      }
+      default: {
+        throw new Error(`Unhandled action type: `)
+      }
+    }
+  }
+type ProviderProps = {children: React.ReactNode}
+  function CartProvider({children}:ProviderProps) {
+    const defaultCartState = {
+
+    }
+    const [state, dispatch] = React.useReducer<any>(countReducer,defaultCartState); 
+//   const CartContext = {
+//     items: cartState.items,
+//     totalAmount: cartState.totalAmount,
+//     addItems: addItemToCart,
+//     removeItems: removeItemToCart,
+//   };
+return null
+ };
+
+ export default CartProvider;

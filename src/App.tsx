@@ -3,9 +3,10 @@ import Header from "./componets/Layout/Header";
 import "./styles/main.scss";
 import Cart from "./componets/Cart/Cart";
 import { ChangeEvent, useState } from "react";
-import CartProvider from "./store/CartProvider";
+// import CartProvider from "./store/CartProvider";
 import React from "react";
-
+import CartProvider from "./store/cart-contex"
+import { CountProvider } from "./store/CartProvider";
 
 function App() {
   const [showCart, setshowCart] = useState<boolean>(false);
@@ -25,13 +26,13 @@ function App() {
   // };
   
   return (
-    <CartProvider>
+    <CountProvider>
     {showCart && <Cart hidehandleCart = {hidehandleCart} />}
       <Header showhandleCart = {showhandleCart}/>
       <main>
         <List />
       </main>
-    </CartProvider>
+    </CountProvider>
   );
 }
 
