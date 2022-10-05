@@ -1,14 +1,13 @@
 import React,{useContext} from 'react'
-import CartCtx from "../../store/cart-contex"
+import {CartContext, CartContextType, ICart} from '../../store/cart-contex'
 interface Props {
   showhandleCart:(()=> any)
 };
 const HeaderCart = ({showhandleCart}:Props) => {
-  const cartctx = useContext(CartCtx)
-
-  const numberCartItems = cartctx.items.reduce((curnum: any, item: any)=>{
-    return curnum + item.totalamount;
-  }, 0);
+//  const cartctx = useContext<any>(CartContext)
+ const { cartitem,addCart } = useContext(CartContext) as CartContextType;
+const numberCartItems = cartitem.length;
+    console.log(numberCartItems)
 
   return (
     <>

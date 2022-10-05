@@ -3,8 +3,8 @@ import Header from "./componets/Layout/Header";
 import "./styles/main.scss";
 import Cart from "./componets/Cart/Cart";
 import { ChangeEvent, useState } from "react";
-import CartProvider from "./store/CartProvider";
 import React from "react";
+import TodoProvider from "./store/CartProvider";
 
 
 function App() {
@@ -19,19 +19,18 @@ function App() {
 
   };
 
-  // const handletodo = (): void => {
-  //   setTodo('1')
-  //   console.log(todo)
-  // };
   
   return (
-    <CartProvider>
+    <>
+     {/* <TodoProvider> */}
     {showCart && <Cart hidehandleCart = {hidehandleCart} />}
       <Header showhandleCart = {showhandleCart}/>
       <main>
         <List />
       </main>
-    </CartProvider>
+
+    {/* </TodoProvider> */}
+    </>
   );
 }
 

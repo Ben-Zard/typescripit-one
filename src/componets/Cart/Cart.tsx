@@ -8,7 +8,7 @@ const Cart = ({hidehandleCart}:Props) => {
     const cartItems = (
     <ul className = 'cart'>
         {[{id: "1",name: "name", amount: 2, price: 10.99}].map((item)=>(
-        <li>{item.name}</li>
+        <><li>{item.name}</li><li>{item.amount}</li></>
         ))}
     </ul>
     );

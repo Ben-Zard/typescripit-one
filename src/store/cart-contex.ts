@@ -1,27 +1,31 @@
 
 import React, { createContext } from 'react';
+export interface ICart {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    amount: number;
+  }
 
-type ContextState = {
-    items: {amount?:any,
-    description?:any,
-    price?:any,
-    id?:any,
-    name?:any,
-}[],
-    totalAmount: number,
-    addItem?:( ) => any,
-    removeItem?: (id:any) => any 
+export type CartContextType = {
+    cartitem: ICart[];
+    addCart: (cart: ICart) => void;
+    removeCart: (id: number) => void;
+  };
+
+  const defalutCart={
+    cartitem:[
+{   
+    id: 0,
+    name: 'string',
+    description: 'string', 
+    price: 0,
+    amount: 0
 }
+],
+    addCart: () => {},
+    removeCart: () => { }
+  }
 
- const Context:ContextState = {
-    items: [],
-    totalAmount: 5,
-    addItem:() => Context.items,
-    removeItem: (id: any) => id,
-    }
-
- export type CartState = ContextState;
-// const CartCtx = createContext<ContextState>(CartContext);
-const CartCtx = createContext<ContextState>(Context)
-export default CartCtx;
-// export default CartCtx;
+export const CartContext = createContext<CartContextType | null>(defalutCart);
