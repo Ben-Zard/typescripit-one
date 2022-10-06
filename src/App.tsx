@@ -5,6 +5,7 @@ import Cart from "./componets/Cart/Cart";
 import { ChangeEvent, useState } from "react";
 import React from "react";
 import TodoProvider from "./store/CartProvider";
+import CartProvider from "./store/CartProvider";
 
 
 function App() {
@@ -22,14 +23,14 @@ function App() {
   
   return (
     <>
-     {/* <TodoProvider> */}
+     <CartProvider>
     {showCart && <Cart hidehandleCart = {hidehandleCart} />}
       <Header showhandleCart = {showhandleCart}/>
       <main>
         <List />
       </main>
 
-    {/* </TodoProvider> */}
+    </CartProvider>
     </>
   );
 }

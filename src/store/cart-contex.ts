@@ -9,6 +9,7 @@ export interface ICart {
   }
 
 export type CartContextType = {
+    totalAmount: number;
     cartitem: ICart[];
     addCart: (cart: ICart) => void;
     removeCart: (id: number) => void;
@@ -18,14 +19,15 @@ export type CartContextType = {
     cartitem:[
 {   
     id: 0,
-    name: 'string',
-    description: 'string', 
+    name: '',
+    description: '', 
     price: 0,
     amount: 0
 }
 ],
+totalAmount: 0 as number,
     addCart: () => {},
     removeCart: () => { }
   }
 
-export const CartContext = createContext<CartContextType | null>(defalutCart);
+export const CartContext = createContext<CartContextType |undefined| null>(defalutCart);

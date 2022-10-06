@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-import { CartContext, CartContextType, ICart } from "../../../store/cart-contex";
+import { CartContext } from "../../../store/cart-contex";
 import {IMealList} from "../../interface"
 import MealItemForm from "./MealItemForm";
 
@@ -13,16 +13,16 @@ import MealItemForm from "./MealItemForm";
 
 
 const MealItem = ({name,description,price,id,}: Props) => {
- //const cartCTX =useContext(CartContext)
- const { addCart } = useContext(CartContext) as CartContextType;
-const addItemToCart = () => {
-  const cartitem = {id: id,
-    name: +name,
-    description: +description, 
-    price: +price,
-    // amount: +amount
-  }  
-  return cartitem
+const cartCTX =useContext(CartContext)
+
+const addItemToCart = (amount:number,) => {
+  cartCTX!.addCart({id: id,
+    name: name,
+    description: description, 
+    price: price,
+   amount: amount
+  })
+console.log(cartCTX)
 }
   return (
     <li className="meal">

@@ -12,10 +12,11 @@ const MealItemForm = ({ addItemToCart, id }: Props) => {
   const amountInput = useRef<any>(1);
   const [isvalid, setisValid] = useState<boolean>(true);
 
-  const submitHandler = () => {
-    const enteredAmount = amountInput.current.value;
+  const submitHandler = (e:any) => {
+    e.preventDefault()
+    const enteredAmount:string = amountInput.current.value;
     const enteredAmountNum = +enteredAmount;
-    if (enteredAmountNum < 1) {
+    if (enteredAmountNum < 1 || enteredAmount.trim().length === 0) {
       setisValid(false);
       return;
     }

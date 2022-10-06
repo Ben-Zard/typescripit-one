@@ -1,15 +1,34 @@
-import Modal from '../UI/Modal'
-
+import { useContext, useState } from 'react';
+import { CartContext, ICart } from '../../store/cart-contex';
+import Modal from '../UI/Modal';
+import CartItem from './CartItem'
 interface Props {
     hidehandleCart: ()=> void;
 }
 
 const Cart = ({hidehandleCart}:Props) => {
-    const cartItems = (
+    const cartCTX =useContext(CartContext);
+    const cartItemRemove = () => {
+        // cartCTX!.addCart(cartItems)
+    }
+
+    const cartItemAdd = (item:any,amount:number) => {
+        cartCTX!.addCart(item)
+    }
+
+    const totalAmount = cartCTX!.totalAmount;
+    const haveitems = cartCTX!.cartitem.length > 1;
+    const cartItems:any = (
     <ul className = 'cart'>
-        {[{id: "1",name: "name", amount: 2, price: 10.99}].map((item)=>(
-        <><li>{item.name}</li><li>{item.amount}</li></>
-        ))}
+    {cartCTX!.cartitem.map((item:ICart) => (   
+            <CartItem 
+            key ={item.id}
+            name = {item.name}
+            amount = {item.amount}
+            price = {item.price}
+            // onRemove = {cartItemRemove}
+            onAdd = {cartItemAdd}/>))}
+     
     </ul>
     );
   return (
@@ -18,11 +37,11 @@ const Cart = ({hidehandleCart}:Props) => {
         {cartItems}
         <div className = 'total'>
             <span>Total Amount </span>
-            <span>5 </span>
+            <span>{totalAmount} </span>
             </div>
         <div className = "actions">
             <button className = 'buttonalt' onClick = {hidehandleCart}>Close</button> 
-            <button className = 'button'onClick = {hidehandleCart}> Order</button> 
+        {haveitems && <button className = 'button'> Order</button> }
         </div>
     </Modal>
 </>

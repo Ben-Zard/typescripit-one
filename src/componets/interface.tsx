@@ -7,14 +7,14 @@ export interface IMealList{
  }
 
  export interface ICart{
-    id: string;
+    id: number;
     name: string;
     description: string;
     price: string;
  }[]
 
  export type Cart = {
-    item: {id: string;
+    item: {id: number;
     name: string;
     description: string;
     price: string;};
